@@ -1,8 +1,8 @@
 
 import { Router } from "express";
 
-import { prestamoController } from "../controller/prestamos.controller";
-import { ClientAdapterRepository } from "../adapters/clients.repository.adapter";
+import { prestamoController } from "../controller/client.controller";
+import { ClientAdapterRepository } from "../adapters/client.repository.adapter";
 
 const router = Router();
 

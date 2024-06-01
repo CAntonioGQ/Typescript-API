@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express"
 
-import { DatabaseRepository } from "../repository/declarations.repository";
-import { Client } from "../entity/client";
+import { ClientRepository } from "../repository/client.repository";
+import { Client } from "../entity/client.entity";
 
 export class prestamoController {
-  constructor(private repository: DatabaseRepository<Client>) {}
+  constructor(private repository: ClientRepository<Client>) {}
 
   async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

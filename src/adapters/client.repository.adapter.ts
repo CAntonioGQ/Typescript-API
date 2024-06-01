@@ -2,10 +2,10 @@ import { NotFound } from "http-errors";
 
 import database from "../config/database";
 
-import { DatabaseRepository, Id, Query } from "../repository/declarations.repository";
-import { Client } from "../entity/client";
+import { ClientRepository, Id, Query } from "../repository/client.repository";
+import { Client } from "../entity/client.entity";
 
-export class ClientAdapterRepository implements DatabaseRepository<Client> {
+export class ClientAdapterRepository implements ClientRepository<Client> {
   async create(data: Partial<Client>, query?: Query): Promise<Client> {
     const repository = database.getRepository(Client);
 
