@@ -13,6 +13,9 @@ import {
   
     @Column({name:'product', type:"varchar"})
     product!: string;
+
+    @Column({name:'description', type:"varchar"})
+    description!: string;
   
     @CreateDateColumn()
     createdAt!: Date;
