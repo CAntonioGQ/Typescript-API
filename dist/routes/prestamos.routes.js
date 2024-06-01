@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const prestamos_controller_1 = require("../controller/prestamos.controller");
+const prestamos_repository_1 = require("../repositories/prestamos.repository");
+const router = (0, express_1.Router)();
+const controller = new prestamos_controller_1.prestamoController(new prestamos_repository_1.PrestamoRepository());
+router.post("/prestamos", controller.create.bind(controller));
+router.get("/prestamos", controller.list.bind(controller));
+router.get("/prestamos/:prestamoId", controller.get.bind(controller));
+router.put("/prestamos/:prestamoId", controller.update.bind(controller));
+router.delete("/prestamos/:prestamoId", controller.remove.bind(controller));
+exports.default = router;
