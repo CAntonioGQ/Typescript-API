@@ -1,12 +1,12 @@
 
 import { Router } from "express";
 
-import { prestamoController } from "../controller/client.controller";
+import { clientController } from "../controller/client.controller";
 import { ClientAdapterRepository } from "../adapters/client.repository.adapter";
 
 const router = Router();
 
-const controller = new prestamoController(
+const controller = new clientController(
   new ClientAdapterRepository()
 );
 

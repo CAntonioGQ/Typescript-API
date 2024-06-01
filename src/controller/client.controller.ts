@@ -3,16 +3,16 @@ import { Request, Response, NextFunction } from "express"
 import { ClientRepository } from "../repository/client.repository";
 import { Client } from "../entity/client.entity";
 
-export class prestamoController {
-  constructor(private repository: ClientRepository<Client>) {}
+export class clientController {
+  constructor(private clientRepository: ClientRepository<Client>) {}
 
   async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const body = req.body;
   
-      const prestamo = await this.repository.create(body)
+      const client = await this.clientRepository.create(body)
   
-      res.status(200).json(prestamo);
+      res.status(200).json(client);
     } catch (error) {
       next(error);
     }
@@ -20,8 +20,8 @@ export class prestamoController {
 
   async list(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const prestamos = await this.repository.list();
-      res.status(200).json(prestamos); 
+      const clients = await this.clientRepository.list();
+      res.status(200).json(clients); 
     } catch (error) {
       next(error);
     }
@@ -29,11 +29,11 @@ export class prestamoController {
 
   async get(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { prestamoId } = req.params;
+      const { clientId } = req.params;
 
-      const task = await this.repository.get(prestamoId)
+      const client = await this.clientRepository.get(clientId)
 
-      res.status(200).json(task);
+      res.status(200).json(client);
     } catch (error) {
       next(error);
     }
@@ -41,12 +41,12 @@ export class prestamoController {
 
   async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { prestamoId } = req.params;
+      const { clientId } = req.params;
       const body = req.body;
 
-      const prestamo = await this.repository.update(prestamoId, body);
+      const client = await this.clientRepository.update(clientId, body);
       
-      res.status(200).json(prestamo); 
+      res.status(200).json(client); 
     } catch (error) {
       next(error);
     }
@@ -54,11 +54,11 @@ export class prestamoController {
 
   async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { prestamoId } = req.params;
+      const { clientId } = req.params;
 
-      const task = await this.repository.remove(prestamoId);
+      const client = await this.clientRepository.remove(clientId);
       
-      res.status(200).json(task);
+      res.status(200).json(client);
     } catch (error) {
       next(error);
     }
