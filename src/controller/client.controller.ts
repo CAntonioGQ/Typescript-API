@@ -1,17 +1,14 @@
-import { Request, Response, NextFunction } from "express"
-
+import { Request, Response, NextFunction } from "express";
 import { ClientRepository } from "../repository/client.repository";
 import { Client } from "../entity/client.entity";
 
-export class clientController {
-  constructor(private clientRepository: ClientRepository<Client>) {}
+export class ClientController {
+  constructor(private clientRepository: ClientRepository<Client>) { }
 
   async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const body = req.body;
-  
-      const client = await this.clientRepository.create(body)
-  
+      const client = await this.clientRepository.create(body);
       res.status(200).json(client);
     } catch (error) {
       next(error);
@@ -21,7 +18,7 @@ export class clientController {
   async list(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const clients = await this.clientRepository.list();
-      res.status(200).json(clients); 
+      res.status(200).json(clients);
     } catch (error) {
       next(error);
     }
@@ -29,10 +26,8 @@ export class clientController {
 
   async get(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { clientId } = req.params;
-
-      const client = await this.clientRepository.get(clientId)
-
+      const { clienteId } = req.params;
+      const client = await this.clientRepository.get(clienteId);
       res.status(200).json(client);
     } catch (error) {
       next(error);
@@ -41,12 +36,10 @@ export class clientController {
 
   async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { clientId } = req.params;
+      const { clienteId } = req.params;
       const body = req.body;
-
-      const client = await this.clientRepository.update(clientId, body);
-      
-      res.status(200).json(client); 
+      const client = await this.clientRepository.update(clienteId, body);
+      res.status(200).json(client);
     } catch (error) {
       next(error);
     }
@@ -54,10 +47,8 @@ export class clientController {
 
   async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { clientId } = req.params;
-
-      const client = await this.clientRepository.remove(clientId);
-      
+      const { clienteId } = req.params;
+      const client = await this.clientRepository.remove(clienteId);
       res.status(200).json(client);
     } catch (error) {
       next(error);

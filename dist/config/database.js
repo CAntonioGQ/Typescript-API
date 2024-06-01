@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const client_1 = require("../entity/client");
+const client_entity_1 = require("../entity/client.entity");
 exports.default = new typeorm_1.DataSource({
     type: "mysql",
     host: "localhost",
@@ -9,7 +9,7 @@ exports.default = new typeorm_1.DataSource({
     username: "root",
     password: "",
     database: "sushiapp",
-    entities: [client_1.Client],
+    entities: [client_entity_1.Client],
     synchronize: true,
     logging: false
 });
