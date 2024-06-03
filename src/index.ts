@@ -4,7 +4,10 @@ import express from "express";
 
 import database from "./config/database";
 
-import PrestamoRoutes from "./routes/client.routes";
+import clientRouter from "./routes/client.routes";
+import employeeRouter from "./routes/employee.routes";
+import productRouter from "./routes/product.routes";
+
 
 const app = express();
 
@@ -15,7 +18,7 @@ database.initialize()
   .then(() => console.log("Database connected"))
   .catch(console.error)
 
-app.use('/api', PrestamoRoutes);
+app.use('/api', clientRouter, employeeRouter, productRouter);
 
 app.listen(3030, ()=> {
   console.log("App execute in port:3030");

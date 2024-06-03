@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -8,34 +17,44 @@ const http_errors_1 = require("http-errors");
 const database_1 = __importDefault(require("../config/database"));
 const client_entity_1 = require("../entity/client.entity");
 class ClientAdapterRepository {
-    async create(data, query) {
-        const repository = database_1.default.getRepository(client_entity_1.Client);
-        const client = repository.create(data);
-        await repository.save(client);
-        return client;
+    create(data, query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const repository = database_1.default.getRepository(client_entity_1.Client);
+            const client = repository.create(data);
+            yield repository.save(client);
+            return client;
+        });
     }
-    async list(query) {
-        const repository = database_1.default.getRepository(client_entity_1.Client);
-        return repository.find();
+    list(query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const repository = database_1.default.getRepository(client_entity_1.Client);
+            return repository.find();
+        });
     }
-    async get(id, query) {
-        const repository = database_1.default.getRepository(client_entity_1.Client);
-        const client = await repository.findOneBy({ idClient: id });
-        if (!client) {
-            throw new http_errors_1.NotFound("Client does not exist");
-        }
-        return client;
+    get(id, query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const repository = database_1.default.getRepository(client_entity_1.Client);
+            const client = yield repository.findOneBy({ idClient: id });
+            if (!client) {
+                throw new http_errors_1.NotFound("Client does not exist");
+            }
+            return client;
+        });
     }
-    async update(id, data, query) {
-        const repository = database_1.default.getRepository(client_entity_1.Client);
-        await repository.update(id, data);
-        return this.get(id, query);
+    update(id, data, query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const repository = database_1.default.getRepository(client_entity_1.Client);
+            yield repository.update(id, data);
+            return this.get(id, query);
+        });
     }
-    async remove(id, query) {
-        const repository = database_1.default.getRepository(client_entity_1.Client);
-        const client = await this.get(id, query);
-        await repository.delete(id);
-        return client;
+    remove(id, query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const repository = database_1.default.getRepository(client_entity_1.Client);
+            const client = yield this.get(id, query);
+            yield repository.delete(id);
+            return client;
+        });
     }
 }
 exports.ClientAdapterRepository = ClientAdapterRepository;
