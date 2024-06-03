@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmployeeAdapterRepository = void 0;
 const http_errors_1 = require("http-errors");
-const database_1 = __importDefault(require("../config/database"));
+const database_1 = __importDefault(require("../config/database/database"));
 const employee_entity_1 = require("../entity/employee.entity");
 class EmployeeAdapterRepository {
     create(data, query) {

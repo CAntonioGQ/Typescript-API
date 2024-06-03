@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import express from "express";
-import database from "./config/database";
+import database from "./config/database/database";
 import clientRouter from "./routes/client.routes";
 import employeeRouter from "./routes/employee.routes";
 import productRouter from "./routes/product.routes";

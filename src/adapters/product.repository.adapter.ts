@@ -1,5 +1,5 @@
 import { NotFound } from "http-errors";
-import database from "../config/database";
+import database from "../config/database/database";
 import { ProductRepository, Id, Query } from "../repository/product.repository";
 import { Product } from "../entity/product.entity";
 
