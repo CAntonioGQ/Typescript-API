@@ -1,6 +1,8 @@
 import { DataSource } from "typeorm";
 
 import { Client } from "../entity/client.entity";
+import { Employee } from "../entity/employee.entity";
+import { Product } from "../entity/product.entity";
 
 export default new DataSource({
   type: "mysql",
@@ -9,7 +11,7 @@ export default new DataSource({
   username: "root",
   password: "",
   database: "sushiapp",
-  entities: [Client],
+  entities: [Client, Employee, Product],
   synchronize: true,
   logging: false
 });
