@@ -13,6 +13,6 @@ export default new DataSource({
   password: "",
   database: "sushiapp",
   entities: [Client, Employee, Product, Price],
-  synchronize: true,
+  synchronize: false,
   logging: false
 });

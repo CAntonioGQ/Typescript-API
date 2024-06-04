@@ -20,7 +20,7 @@ export class PriceAdapterRepository implements PriceRepository<Price> {
     const repository = database.getRepository(Price);
     const price = await repository.findOneBy({ idPrice: id as number });
     if (!price) {
-      throw new NotFound("Price does not exist");
+      throw new NotFound("No existe un precio con el id proporcionado");
     }
     return price;
   }
