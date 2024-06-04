@@ -36,7 +36,7 @@ class ProductAdapterRepository {
             const repository = database_1.default.getRepository(product_entity_1.Product);
             const product = yield repository.findOneBy({ idProduct: id });
             if (!product) {
-                throw new http_errors_1.NotFound("Product does not exist");
+                throw new http_errors_1.NotFound("No existe un producto con el id proporcionado");
             }
             return product;
         });

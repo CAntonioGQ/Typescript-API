@@ -36,7 +36,7 @@ class PriceAdapterRepository {
             const repository = database_1.default.getRepository(price_entity_1.Price);
             const price = yield repository.findOneBy({ idPrice: id });
             if (!price) {
-                throw new http_errors_1.NotFound("Price does not exist");
+                throw new http_errors_1.NotFound("No existe un precio con el id proporcionado");
             }
             return price;
         });
@@ -52,6 +52,13 @@ class PriceAdapterRepository {
         return __awaiter(this, void 0, void 0, function* () {
             const repository = database_1.default.getRepository(price_entity_1.Price);
             const price = yield this.get(id, query);
+            // const ProductRepository = new ProductAdapterRepository();
+            // const products = await ProductRepository.list();
+            // const relatedProducts = products.filter(product => product.price === price.idPrice);
+            // console.log(relatedProducts);
+            // if (relatedProducts.length) {
+            //   throw new Error('No se puede eliminar el precio porque está asociado a un producto');
+            // }
             yield repository.delete(id);
             return price;
         });

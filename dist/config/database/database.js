@@ -13,6 +13,6 @@ exports.default = new typeorm_1.DataSource({
     password: "",
     database: "sushiapp",
     entities: [client_entity_1.Client, employee_entity_1.Employee, product_entity_1.Product, price_entity_1.Price],
-    synchronize: true,
+    synchronize: false,
     logging: false
 });

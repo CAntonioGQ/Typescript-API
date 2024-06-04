@@ -36,7 +36,7 @@ class ClientAdapterRepository {
             const repository = database_1.default.getRepository(client_entity_1.Client);
             const client = yield repository.findOneBy({ idClient: id });
             if (!client) {
-                throw new http_errors_1.NotFound("Client does not exist");
+                throw new http_errors_1.NotFound("No existe un cliente con el id proporcionado");
             }
             return client;
         });

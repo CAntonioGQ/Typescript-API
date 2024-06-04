@@ -20,7 +20,7 @@ export class ClientAdapterRepository implements ClientRepository<Client> {
     const repository = database.getRepository(Client);
     const client = await repository.findOneBy({ idClient: id as number });
     if (!client) {
-      throw new NotFound("Client does not exist");
+      throw new NotFound("No existe un cliente con el id proporcionado");
     }
     return client;
   }
