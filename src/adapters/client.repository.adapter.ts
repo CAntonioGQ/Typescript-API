@@ -2,11 +2,15 @@ import { NotFound } from "http-errors";
 import database from "../config/database/database";
 import { ClientRepository, Id, Query } from "../repository/client.repository";
 import { Client } from "../entity/client.entity";
+import { ClientModel } from "../models/client";
 
 export class ClientAdapterRepository implements ClientRepository<Client> {
   async create(data: Partial<Client>, query?: Query): Promise<Client> {
     const repository = database.getRepository(Client);
-    const client = repository.create(data);
+    const client = repository.create({
+      ...data,
+      status: ClientModel.ENABLE
+    });
     await repository.save(client);
     return client;
   }
@@ -34,7 +38,11 @@ export class ClientAdapterRepository implements ClientRepository<Client> {
   async remove(id: Id, query?: Query): Promise<Client> {
     const repository = database.getRepository(Client);
     const client = await this.get(id, query);
-    await repository.delete(id);
+    if (!client) {
+      throw new NotFound("Client does not exist");
+    }
+    client.status = ClientModel.DELETE;
+    await repository.save(client);
     return client;
   }
 }

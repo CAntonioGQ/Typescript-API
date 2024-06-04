@@ -19,7 +19,10 @@ import {
 
     @Column({name:'email', type:"varchar"})
     email!: string;
-  
+
+    @Column({name:'status', type:"integer"})
+    status!: number;
+
     @CreateDateColumn()
     createdAt!: Date;
     
