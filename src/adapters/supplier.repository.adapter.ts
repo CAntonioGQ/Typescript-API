@@ -19,9 +19,9 @@ export class SupplierAdapterRepository implements SupplierRepository<Supplier>{
     
       async get(id: Id, query?: Query): Promise<Supplier> {
         const repository = database.getRepository(Supplier);
-        const supplier = await repository.findOneBy({ idSupplier: id as number });
+        const supplier = await repository.findOneBy({ idSupplier: 6 as number });
         if (!supplier) {
-          throw new NotFound("Client does not exist");
+          throw new NotFound("Supplier does not exist");
         }
         return supplier;
       }
@@ -36,6 +36,7 @@ export class SupplierAdapterRepository implements SupplierRepository<Supplier>{
         const repository = database.getRepository(Supplier);
         const supplier = await this.get(id, query);
         await repository.delete(id);
+        
         return supplier;
       }
 }
