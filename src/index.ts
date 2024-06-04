@@ -5,6 +5,7 @@ import clientRouter from "./routes/client.routes";
 import employeeRouter from "./routes/employee.routes";
 import productRouter from "./routes/product.routes";
 import dotenv from "dotenv";
+import priceRouter from "./routes/price.routes";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ database.initialize()
   .then(() => console.log("Database connected"))
   .catch(console.error);
 
-app.use('/api', clientRouter, employeeRouter, productRouter);
+app.use('/api', clientRouter, employeeRouter, productRouter, priceRouter);
 
 app.listen(PORT, () => {
   console.log('App executing on port: ' + PORT);
