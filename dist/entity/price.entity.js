@@ -9,37 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Product = void 0;
+exports.Price = void 0;
 const typeorm_1 = require("typeorm");
-const price_entity_1 = require("./price.entity");
-let Product = class Product {
+const product_entity_1 = require("./product.entity");
+let Price = class Price {
 };
-exports.Product = Product;
+exports.Price = Price;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_product', type: "integer" }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_price', type: "integer" }),
     __metadata("design:type", Number)
-], Product.prototype, "idProduct", void 0);
+], Price.prototype, "idPrice", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'product', type: "varchar" }),
+    (0, typeorm_1.Column)({ name: 'price', type: "varchar" }),
     __metadata("design:type", String)
-], Product.prototype, "product", void 0);
+], Price.prototype, "price", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'description', type: "varchar" }),
-    __metadata("design:type", String)
-], Product.prototype, "description", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => price_entity_1.Price),
-    (0, typeorm_1.JoinColumn)({ name: 'id_price' }),
-    __metadata("design:type", price_entity_1.Price)
-], Product.prototype, "price", void 0);
+    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product.price),
+    __metadata("design:type", Array)
+], Price.prototype, "products", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Product.prototype, "createdAt", void 0);
+], Price.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], Product.prototype, "updatedAt", void 0);
-exports.Product = Product = __decorate([
-    (0, typeorm_1.Entity)({ name: 'products' })
-], Product);
+], Price.prototype, "updatedAt", void 0);
+exports.Price = Price = __decorate([
+    (0, typeorm_1.Entity)({ name: 'prices' })
+], Price);

@@ -24,7 +24,7 @@ export class ProductAdapterRepository implements ProductRepository<Product> {
         const repository = database.getRepository(Product);
         const product = await repository.findOneBy({ idProduct: id as number });
         if (!product) {
-            throw new NotFound("Product does not exist");
+            throw new NotFound("No existe un producto con el id proporcionado");
         }
         return product;
     }

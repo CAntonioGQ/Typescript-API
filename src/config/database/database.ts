@@ -4,6 +4,7 @@ import { Client } from "../../entity/client.entity";
 import { Employee } from "../../entity/employee.entity";
 import { Product } from "../../entity/product.entity";
 import { Supplier } from "../../entity/supplier.entity";
+import { Price } from "../../entity/price.entity";
 
 export default new DataSource({
   type: "mysql",
@@ -12,7 +13,8 @@ export default new DataSource({
   username: "root",
   password: "",
   database: "sushiapp",
-  entities: [Client, Employee, Product, Supplier],
+  entities: [Client, Employee, Product, Supplier, Price],
   synchronize: true,
+
   logging: false
 });

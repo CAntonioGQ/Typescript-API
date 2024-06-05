@@ -3,8 +3,11 @@ import {
     Column,
     PrimaryGeneratedColumn,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    JoinColumn,
+    ManyToOne
   } from "typeorm";
+import { Price } from "./price.entity";
   
   @Entity({name: 'products'})
   export class Product {
@@ -16,6 +19,10 @@ import {
 
     @Column({name:'description', type:"varchar"})
     description!: string;
+
+    @ManyToOne(() => Price)
+    @JoinColumn({name: 'id_price'})
+    price!: Price;
   
     @Column({name:'status', type:"integer"})
     status!: number;

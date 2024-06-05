@@ -36,7 +36,7 @@ class EmployeeAdapterRepository {
             const repository = database_1.default.getRepository(employee_entity_1.Employee);
             const employee = yield repository.findOneBy({ idEmployee: id });
             if (!employee) {
-                throw new http_errors_1.NotFound("Employee does not exist");
+                throw new http_errors_1.NotFound("No existe un empleado con el id proporcionado");
             }
             return employee;
         });

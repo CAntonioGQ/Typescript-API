@@ -24,7 +24,7 @@ export class EmployeeAdapterRepository implements EmployeeRepository<Employee> {
         const repository = database.getRepository(Employee);
         const employee = await repository.findOneBy({ idEmployee: id as number });
         if (!employee) {
-            throw new NotFound("Employee does not exist");
+            throw new NotFound("No existe un empleado con el id proporcionado");
         }
         return employee;
     }
