@@ -1,4 +1,4 @@
-export class Supplier {
+export class SupplierModel {
     static ENABLE = 1;
     static DISABLE = 2;
     static LOCK = 3;

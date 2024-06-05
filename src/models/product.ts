@@ -1,4 +1,4 @@
-export class Product{
+export class ProductModel{
     static ENABLE = 1;
     static DISABLE= 2;
     static LOCK = 3;

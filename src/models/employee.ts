@@ -1,4 +1,4 @@
-export class Employee{
+export class EmployeeModel{
     static ENABLE = 1;
     static DISABLE= 2;
     static LOCK = 3;

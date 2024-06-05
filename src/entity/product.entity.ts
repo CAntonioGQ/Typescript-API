@@ -17,6 +17,9 @@ import {
     @Column({name:'description', type:"varchar"})
     description!: string;
   
+    @Column({name:'status', type:"integer"})
+    status!: number;
+    
     @CreateDateColumn()
     createdAt!: Date;
     

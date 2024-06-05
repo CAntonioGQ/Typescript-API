@@ -2,12 +2,15 @@ import { NotFound } from "http-errors";
 import database from "../config/database/database";
 import { SupplierRepository, Id, Query } from "../repository/supplier.repository";
 import { Supplier } from "../entity/supplier.entity";
+import { SupplierModel } from "../models/supplier";
 
 
 export class SupplierAdapterRepository implements SupplierRepository<Supplier>{
     async create(data: Partial<Supplier>, query?: Query): Promise<Supplier> {
         const repository = database.getRepository(Supplier);
-        const supplier = repository.create(data);
+        const supplier = repository.create({...data,
+          status: SupplierModel.ENABLE
+    });
         await repository.save(supplier);
         return supplier;
       }
@@ -35,8 +38,11 @@ export class SupplierAdapterRepository implements SupplierRepository<Supplier>{
       async remove(id: Id, query?: Query): Promise<Supplier> {
         const repository = database.getRepository(Supplier);
         const supplier = await this.get(id, query);
-        await repository.delete(id);
-        
+        if(!supplier){
+          throw new NotFound("Supplier Not Found")
+        }
+        supplier.status = SupplierModel.DELETE
+        await repository.save(supplier);
         return supplier;
       }
 }

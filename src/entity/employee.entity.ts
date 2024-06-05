@@ -22,7 +22,10 @@ import {
 
     @Column({name:'address', type: "varchar"})
     address!: string
-  
+
+    @Column({name:'status', type:"integer"})
+    status!: number;
+     
     @CreateDateColumn()
     createdAt!: Date;
     

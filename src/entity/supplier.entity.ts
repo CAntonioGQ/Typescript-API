@@ -25,6 +25,9 @@ import {
 
     @Column({name:'contact_address', type:"varchar"})
     contactAddress!: string;
+
+    @Column({name:'status', type:"integer"})
+    status!: number;
   
     @CreateDateColumn()
     createdAt!: Date;
