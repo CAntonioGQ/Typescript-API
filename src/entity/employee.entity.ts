@@ -16,7 +16,7 @@ import { Branch } from "./branch.entity";
     idEmployee!: number;
 
     @ManyToOne(() => Branch)
-    @JoinColumn({name: 'id_branch'})
+    @JoinColumn({name: 'id_branch'})  
     branch!: Branch;
   
     @Column({name:'name', type:"varchar"})

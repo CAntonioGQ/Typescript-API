@@ -17,7 +17,7 @@ export class Branch {
   @Column({name:'name', type:'varchar'})
   branch!: Branch; 
   
-  @CreateDateColumn()
+  @CreateDateColumn()  
   createdAt!: Date;
   
   @UpdateDateColumn()

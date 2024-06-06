@@ -18,7 +18,7 @@ import { Order } from "./order.entity";
     @JoinColumn({name:'order_id'})
     order!: Order;
   
-    @Column({name:'name', type:"varchar"})
+    @Column({name:'name', type:"varchar"})  
     name!: string;
   
     @Column({name:'number', type:"varchar"})

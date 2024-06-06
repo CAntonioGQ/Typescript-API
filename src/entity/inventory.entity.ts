@@ -16,7 +16,7 @@ export class Inventory {
   @OneToMany(() => Product, product => product.inventory)
   products!: Product[]
 
-  @Column({name:'quantity', type:"varchar"})
+  @Column({name:'quantity', type:"varchar"})  
   quantity!: string;
 
   @CreateDateColumn()

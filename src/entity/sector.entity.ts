@@ -19,7 +19,7 @@ import { Branch } from "./branch.entity";
   @Column({name:'sector', type:'varchar'})
   sector!: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn() 
   createdAt!: Date;
     
   @UpdateDateColumn()

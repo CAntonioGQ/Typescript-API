@@ -15,7 +15,7 @@ import { Inventory } from "./inventory.entity";
   export class Product {
     @PrimaryGeneratedColumn({name:'id_product', type: "integer"})
     idProduct!: number;
-  
+    
     @Column({name:'product', type:"varchar"})
     product!: string;
 

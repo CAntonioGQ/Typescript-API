@@ -11,11 +11,11 @@ import { Client } from "./client.entity";
 @Entity({name:'orders'})
 export class Order {
   @PrimaryGeneratedColumn({name:'id_order', type:'integer'})
-  idOrder!: number;
+  idOrder!: number; 
 
   @OneToMany(() => Client, client => client.order)
   clients!: Client[];
-
+  
   @Column({name:'order_date', type:'date'})
   orderDate!: Date;
 
