@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const supplier_repository_adapter_1 = require("../../adapters/supplier.repository.adapter");
+const supplier_controller_1 = require("../controller/supplier.controller");
+const supplierRouter = (0, express_1.Router)();
+const controller = new supplier_controller_1.SupplierController(new supplier_repository_adapter_1.SupplierAdapterRepository());
+supplierRouter.post("/proveedores", controller.create.bind(controller));
+supplierRouter.get("/proveedores", controller.list.bind(controller));
+supplierRouter.get("/proveedores/:proveedoresId", controller.get.bind(controller));
+supplierRouter.put("/proveedores/:proveedoresId", controller.update.bind(controller));
+supplierRouter.delete("/proveedores/:proveedoresId", controller.remove.bind(controller));
+exports.default = supplierRouter;

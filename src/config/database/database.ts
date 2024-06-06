@@ -1,10 +1,10 @@
 import { DataSource } from "typeorm";
 
-import { Client } from "../../entity/client.entity";
-import { Employee } from "../../entity/employee.entity";
-import { Product } from "../../entity/product.entity";
-import { Supplier } from "../../entity/supplier.entity";
-import { Price } from "../../entity/price.entity";
+import { Client } from "../../core/infrastructure/entity/client.entity";
+import { Employee } from "../../core/infrastructure/entity/employee.entity";
+import { Product } from "../../core/infrastructure/entity/product.entity";
+import { Supplier } from "../../core/infrastructure/entity/supplier.entity";
+import { Price } from "../../core/infrastructure/entity/price.entity";
 
 export default new DataSource({
   type: "mysql",

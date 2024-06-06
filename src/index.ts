@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import express from "express";
 import database from "./config/database/database";
-import clientRouter from "./routes/client.routes";
-import employeeRouter from "./routes/employee.routes";
-import productRouter from "./routes/product.routes";
+import clientRouter from "./core/infrastructure/rest/routes/client.routes";
+import employeeRouter from "./core/infrastructure/rest/routes/employee.routes";
+import productRouter from "./core/infrastructure/rest/routes/product.routes";
 import dotenv from "dotenv";
-import supplierRouter from "./routes/supplier.routes";
-import priceRouter from "./routes/price.routes";
+import supplierRouter from "./core/infrastructure/rest/routes/supplier.routes";
+import priceRouter from "./core/infrastructure/rest/routes/price.routes";
 
 dotenv.config();
 
