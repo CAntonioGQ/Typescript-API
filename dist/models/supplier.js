@@ -8,11 +8,11 @@ class SupplierModel {
     set setIdSupplier(idSupplier) {
         this.idSupplier = idSupplier;
     }
-    get getsupplierName() {
-        return this.supplierName;
+    get getNameSupplier() {
+        return this.nameSupplier;
     }
-    set setsupplierName(supplierName) {
-        this.supplierName = supplierName;
+    set setNameSupplier(nameSupplier) {
+        this.nameSupplier = nameSupplier;
     }
     get getContactName() {
         return this.contactName;

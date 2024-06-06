@@ -6,7 +6,7 @@ export class SupplierModel{
   static DELETE = 99;
 
   private idSupplier: number | undefined;
-  private nameSupplier: string | undefined;
+  private supplierName: string | undefined;
   private contactName: string | undefined;
   private contactEmail: string | undefined;
   private contactPhone: string | undefined;
@@ -18,11 +18,11 @@ export class SupplierModel{
   public set setIdSupplier(idSupplier: number | undefined){
       this.idSupplier = idSupplier;
   }
-  public get getNameSupplier(): string | undefined {
-      return this.nameSupplier;
+  public get getsupplierName(): string | undefined {
+      return this.supplierName;
   }
-  public set setNameSupplier(nameSupplier: string | undefined){
-      this.nameSupplier = nameSupplier;
+  public set setsupplierName(supplierName: string | undefined){
+      this.supplierName = supplierName;
   }
   public get getContactName(): string | undefined {
       return this.contactName;
