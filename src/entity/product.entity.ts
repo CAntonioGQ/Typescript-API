@@ -7,7 +7,9 @@ import {
     JoinColumn,
     ManyToOne
   } from "typeorm";
+  
 import { Price } from "./price.entity";
+import { Inventory } from "./inventory.entity";
   
   @Entity({name: 'products'})
   export class Product {
@@ -24,6 +26,10 @@ import { Price } from "./price.entity";
     @JoinColumn({name: 'id_price'})
     price!: Price;
   
+    @ManyToOne(() => Inventory)
+    @JoinColumn({name: 'id_inventory'})
+    inventory!: Inventory; 
+
     @CreateDateColumn()
     createdAt!: Date;
     

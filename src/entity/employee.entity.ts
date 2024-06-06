@@ -3,13 +3,21 @@ import {
     Column,
     PrimaryGeneratedColumn,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    ManyToOne,
+    JoinColumn
   } from "typeorm";
+  
+import { Branch } from "./branch.entity";
   
   @Entity({name: 'employee'})
   export class Employee {
     @PrimaryGeneratedColumn({name:'id_employee', type: "integer"})
     idEmployee!: number;
+
+    @ManyToOne(() => Branch)
+    @JoinColumn({name: 'id_branch'})
+    branch!: Branch;
   
     @Column({name:'name', type:"varchar"})
     name!: string;
