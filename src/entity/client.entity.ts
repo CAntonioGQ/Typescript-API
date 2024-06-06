@@ -3,13 +3,20 @@ import {
     Column,
     PrimaryGeneratedColumn,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    ManyToOne,
+    JoinColumn
   } from "typeorm";
+import { Order } from "./order.entity";
   
   @Entity({name: 'client'})
   export class Client {
     @PrimaryGeneratedColumn({name:'id_client', type: "integer"})
     idClient!: number;
+
+    @ManyToOne(() => Order)
+    @JoinColumn({name:'order_id'})
+    order!: Order;
   
     @Column({name:'name', type:"varchar"})
     name!: string;
