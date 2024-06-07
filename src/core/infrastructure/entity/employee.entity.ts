@@ -1,15 +1,24 @@
+
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  JoinColumn
   } from "typeorm";
+  
+  import { Branch } from './branch.entity';
   
   @Entity({name: 'employee'})
   export class Employee {
     @PrimaryGeneratedColumn({name:'id_employee', type: "integer"})
     idEmployee!: number;
+
+    @ManyToOne(() => Branch)
+    @JoinColumn({name: 'id_branch'})  
+    branch!: Branch;
   
     @Column({name:'name', type:"varchar"})
     name!: string;
@@ -22,10 +31,7 @@ import {
 
     @Column({name:'address', type: "varchar"})
     address!: string
-
-    @Column({name:'status', type:"integer"})
-    status!: number;
-     
+  
     @CreateDateColumn()
     createdAt!: Date;
     

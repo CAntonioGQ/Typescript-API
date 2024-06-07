@@ -8,12 +8,13 @@ import {
     ManyToOne
   } from "typeorm";
 import { Price } from "./price.entity";
+import { Inventory } from "./inventory.entity";
   
-  @Entity({name: 'products'})
+@Entity({name: 'products'})
   export class Product {
     @PrimaryGeneratedColumn({name:'id_product', type: "integer"})
     idProduct!: number;
-  
+    
     @Column({name:'product', type:"varchar"})
     product!: string;
 
@@ -24,9 +25,10 @@ import { Price } from "./price.entity";
     @JoinColumn({name: 'id_price'})
     price!: Price;
   
-    @Column({name:'status', type:"integer"})
-    status!: number;
-    
+    @ManyToOne(() => Inventory)
+    @JoinColumn({name: 'id_inventory'})
+    inventory!: Inventory; 
+
     @CreateDateColumn()
     createdAt!: Date;
     

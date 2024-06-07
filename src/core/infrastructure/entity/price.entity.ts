@@ -19,7 +19,7 @@ export class Price {
 
   @OneToMany(() => Product, product => product.price)
   products!: Product[];
-
+  
   @CreateDateColumn()
   createdAt!: Date;
   

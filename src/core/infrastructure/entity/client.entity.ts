@@ -1,17 +1,25 @@
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  JoinColumn
   } from "typeorm";
+
+  import { Order } from './order.entity';
   
   @Entity({name: 'client'})
   export class Client {
     @PrimaryGeneratedColumn({name:'id_client', type: "integer"})
     idClient!: number;
+
+    @ManyToOne(() => Order)
+    @JoinColumn({name:'order_id'})
+    order!: Order;
   
-    @Column({name:'name', type:"varchar"})
+    @Column({name:'name', type:"varchar"})  
     name!: string;
   
     @Column({name:'number', type:"varchar"})
@@ -19,10 +27,7 @@ import {
 
     @Column({name:'email', type:"varchar"})
     email!: string;
-
-    @Column({name:'status', type:"integer"})
-    status!: number;
-
+  
     @CreateDateColumn()
     createdAt!: Date;
     
