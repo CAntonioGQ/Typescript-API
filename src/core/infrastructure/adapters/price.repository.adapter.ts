@@ -4,11 +4,15 @@ import { PriceRepository, Id, Query } from "../../domain/repository/price.reposi
 import { Price } from "../entity/price.entity";
 
 import { ProductAdapterRepository } from "./product.repository.adapter";
+import { PriceModel } from '../../domain/models/price';
 
 export class PriceAdapterRepository implements PriceRepository<Price> {
   async create(data: Partial<Price>, query?: Query): Promise<Price> {
     const repository = database.getRepository(Price);
-    const price = repository.create(data);
+    const price = repository.create({
+      ...data,
+      status: PriceModel.ENABLE
+    });
     await repository.save(price);
     return price;
   }
@@ -45,8 +49,8 @@ export class PriceAdapterRepository implements PriceRepository<Price> {
     if (relatedProducts.length > 0) {
         throw new Error("No se puede eliminar el precio, ya que está relacionado con uno o más productos.");
     }
-
-    await repository.delete(id);
+    price.status = PriceModel.DELETE
+    await repository.save(price);
     return price;
 }
 }

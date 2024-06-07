@@ -29,6 +29,9 @@ import { Inventory } from "./inventory.entity";
     @JoinColumn({name: 'id_inventory'})
     inventory!: Inventory; 
 
+    @Column({name:'status', type:'number'})
+    status!: number;
+
     @CreateDateColumn()
     createdAt!: Date;
     

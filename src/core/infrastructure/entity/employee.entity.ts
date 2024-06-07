@@ -31,6 +31,9 @@ import {
 
     @Column({name:'address', type: "varchar"})
     address!: string
+
+    @Column({name:'status', type:'number'})
+    status!: number;
   
     @CreateDateColumn()
     createdAt!: Date;

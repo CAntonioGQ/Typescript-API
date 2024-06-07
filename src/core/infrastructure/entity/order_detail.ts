@@ -16,6 +16,9 @@ export class OrderDetail {
   @Column({name:'price', type:'decimal'})
   orderPrice!: number;
 
+  @Column({name:'status', type:'number'})
+  status!: number;
+
   @CreateDateColumn()
   createdAt!: Date;
   

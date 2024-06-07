@@ -27,6 +27,9 @@ export class Branch {
 
   @Column({name:'name', type:'varchar'})
   branch!: Branch; 
+
+  @Column({name:'status', type:'number'})
+  status!: number;
   
   @CreateDateColumn()  
   createdAt!: Date;

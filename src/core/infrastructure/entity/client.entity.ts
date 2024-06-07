@@ -27,6 +27,9 @@ import {
 
     @Column({name:'email', type:"varchar"})
     email!: string;
+
+    @Column({name:'status', type:'number'})
+    status!: number;
   
     @CreateDateColumn()
     createdAt!: Date;

@@ -19,6 +19,9 @@ import { Branch } from "./branch.entity";
   @Column({name:'sector', type:'varchar'})
   sector!: string;
 
+  @Column({name:'status', type:'number'})
+  status!: number;
+
   @CreateDateColumn() 
   createdAt!: Date;
     
