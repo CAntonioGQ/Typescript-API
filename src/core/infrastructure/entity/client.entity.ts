@@ -4,8 +4,7 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn
+  OneToMany
   } from "typeorm";
 
   import { Order } from './order.entity';
@@ -15,9 +14,8 @@ import {
     @PrimaryGeneratedColumn({name:'id_client', type: "integer"})
     idClient!: number;
 
-    @ManyToOne(() => Order)
-    @JoinColumn({name:'order_id'})
-    order!: Order;
+    @OneToMany(() => Order, order => order.client)
+    orders!: Order[];
   
     @Column({name:'name', type:"varchar"})  
     name!: string;
@@ -28,7 +26,7 @@ import {
     @Column({name:'email', type:"varchar"})
     email!: string;
 
-    @Column({name:'status', type:'number'})
+    @Column({name:'status', type:'integer'})
     status!: number;
   
     @CreateDateColumn()

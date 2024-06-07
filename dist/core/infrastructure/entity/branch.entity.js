@@ -9,36 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Inventory = void 0;
+exports.Branch = void 0;
 const typeorm_1 = require("typeorm");
-const product_entity_1 = require("./product.entity");
-let Inventory = class Inventory {
+const employee_entity_1 = require("./employee.entity");
+const sector_entity_1 = require("./sector.entity");
+let Branch = class Branch {
 };
-exports.Inventory = Inventory;
+exports.Branch = Branch;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_inventory', type: "integer" }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_branch', type: 'integer' }),
     __metadata("design:type", Number)
-], Inventory.prototype, "idInventory", void 0);
+], Branch.prototype, "idBranch", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product.inventory),
+    (0, typeorm_1.OneToMany)(() => employee_entity_1.Employee, employee => employee.branch),
     __metadata("design:type", Array)
-], Inventory.prototype, "products", void 0);
+], Branch.prototype, "employee", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'quantity', type: "varchar" }),
-    __metadata("design:type", String)
-], Inventory.prototype, "quantity", void 0);
+    (0, typeorm_1.ManyToOne)(() => sector_entity_1.Sector),
+    (0, typeorm_1.JoinColumn)({ name: 'id_sector' }),
+    __metadata("design:type", sector_entity_1.Sector)
+], Branch.prototype, "sector", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'name', type: 'varchar' }),
+    __metadata("design:type", Branch)
+], Branch.prototype, "branch", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
     __metadata("design:type", Number)
-], Inventory.prototype, "status", void 0);
+], Branch.prototype, "status", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Inventory.prototype, "createdAt", void 0);
+], Branch.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], Inventory.prototype, "updatedAt", void 0);
-exports.Inventory = Inventory = __decorate([
-    (0, typeorm_1.Entity)({ name: 'inventory' })
-], Inventory);
+], Branch.prototype, "updatedAt", void 0);
+exports.Branch = Branch = __decorate([
+    (0, typeorm_1.Entity)({ name: 'branches' })
+], Branch);

@@ -32,7 +32,7 @@ import {
     @Column({name:'address', type: "varchar"})
     address!: string
 
-    @Column({name:'status', type:'number'})
+    @Column({name:'status', type:'integer'})
     status!: number;
   
     @CreateDateColumn()

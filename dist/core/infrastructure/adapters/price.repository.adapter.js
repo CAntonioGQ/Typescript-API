@@ -17,11 +17,12 @@ const http_errors_1 = require("http-errors");
 const database_1 = __importDefault(require("../../../config/database/database"));
 const price_entity_1 = require("../entity/price.entity");
 const product_repository_adapter_1 = require("./product.repository.adapter");
+const price_1 = require("../../domain/models/price");
 class PriceAdapterRepository {
     create(data, query) {
         return __awaiter(this, void 0, void 0, function* () {
             const repository = database_1.default.getRepository(price_entity_1.Price);
-            const price = repository.create(data);
+            const price = repository.create(Object.assign(Object.assign({}, data), { status: price_1.PriceModel.ENABLE }));
             yield repository.save(price);
             return price;
         });
@@ -60,7 +61,8 @@ class PriceAdapterRepository {
             if (relatedProducts.length > 0) {
                 throw new Error("No se puede eliminar el precio, ya que está relacionado con uno o más productos.");
             }
-            yield repository.delete(id);
+            price.status = price_1.PriceModel.DELETE;
+            yield repository.save(price);
             return price;
         });
     }

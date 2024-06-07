@@ -29,7 +29,7 @@ import { Inventory } from "./inventory.entity";
     @JoinColumn({name: 'id_inventory'})
     inventory!: Inventory; 
 
-    @Column({name:'status', type:'number'})
+    @Column({name:'status', type:'integer'})
     status!: number;
 
     @CreateDateColumn()

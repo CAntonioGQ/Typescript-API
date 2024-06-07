@@ -2,6 +2,7 @@ import {
   Column, 
   CreateDateColumn, 
   Entity, 
+  ManyToOne, 
   OneToMany, 
   OneToOne, 
   PrimaryGeneratedColumn, 
@@ -16,8 +17,8 @@ export class Order {
   @PrimaryGeneratedColumn({name:'id_order', type:'integer'})
   idOrder!: number; 
 
-  @OneToMany(() => Client, client => client.order)
-  clients!: Client[];
+  @ManyToOne(() => Client) // Corregir la relación a ManyToOne
+  client!: Client;
 
   @OneToOne(() => OrderDetail, orderDetail => orderDetail.order)
   orderDetail!: OrderDetail;
@@ -25,10 +26,10 @@ export class Order {
   @Column({name:'order_date', type:'date'})
   orderDate!: Date;
 
-  @Column({name:'total_price', type:'number'})
+  @Column({name:'total_price', type:'decimal'})
   totalPrice!: number;
 
-  @Column({name:'status', type:'number'})
+  @Column({name:'status', type:'integer'})
   status!: number;
 
   @CreateDateColumn()

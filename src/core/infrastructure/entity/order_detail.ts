@@ -16,7 +16,7 @@ export class OrderDetail {
   @Column({name:'price', type:'decimal'})
   orderPrice!: number;
 
-  @Column({name:'status', type:'number'})
+  @Column({name:'status', type:'integer'})
   status!: number;
 
   @CreateDateColumn()

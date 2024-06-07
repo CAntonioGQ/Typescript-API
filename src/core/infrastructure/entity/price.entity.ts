@@ -20,7 +20,7 @@ export class Price {
   @OneToMany(() => Product, product => product.price)
   products!: Product[];
 
-  @Column({name:'status', type:'number'})
+  @Column({name:'status', type:'integer'})
   status!: number;
   
   @CreateDateColumn()

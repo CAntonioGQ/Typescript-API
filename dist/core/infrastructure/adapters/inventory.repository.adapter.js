@@ -12,54 +12,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SupplierAdapterRepository = void 0;
+exports.InventoryAdapterRepository = void 0;
 const http_errors_1 = require("http-errors");
 const database_1 = __importDefault(require("../../../config/database/database"));
-const supplier_entity_1 = require("../entity/supplier.entity");
-const supplier_1 = require("../../domain/models/supplier");
-class SupplierAdapterRepository {
+const inventory_entity_1 = require("../entity/inventory.entity");
+const inventory_1 = require("../../domain/models/inventory");
+class InventoryAdapterRepository {
     create(data, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
-            const supplier = repository.create(Object.assign(Object.assign({}, data), { status: supplier_1.SupplierModel.ENABLE }));
-            yield repository.save(supplier);
-            return supplier;
+            const repository = database_1.default.getRepository(inventory_entity_1.Inventory);
+            const inventory = repository.create(Object.assign(Object.assign({}, data), { status: inventory_1.InventoryModel.ENABLE }));
+            yield repository.save(inventory);
+            return inventory;
         });
     }
     list(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
+            const repository = database_1.default.getRepository(inventory_entity_1.Inventory);
             return repository.find();
         });
     }
     get(id, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
-            const supplier = yield repository.findOneBy({ idSupplier: id });
-            if (!supplier) {
-                throw new http_errors_1.NotFound("Supplier does not exist");
+            const repository = database_1.default.getRepository(inventory_entity_1.Inventory);
+            const inventory = yield repository.findOneBy({ idInventory: id });
+            if (!inventory) {
+                throw new http_errors_1.NotFound("No existe inventario con el id proporcionado");
             }
-            return supplier;
+            return inventory;
         });
     }
     update(id, data, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
+            const repository = database_1.default.getRepository(inventory_entity_1.Inventory);
             yield repository.update(id, data);
             return this.get(id, query);
         });
     }
     remove(id, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
-            const supplier = yield this.get(id, query);
-            if (!supplier) {
-                throw new http_errors_1.NotFound("Supplier Not Found");
+            const repository = database_1.default.getRepository(inventory_entity_1.Inventory);
+            const inventory = yield this.get(id, query);
+            if (!inventory) {
+                throw new http_errors_1.NotFound("Inventory does not exist");
             }
-            supplier.status = supplier_1.SupplierModel.DELETE;
-            yield repository.save(supplier);
-            return supplier;
+            inventory.status = inventory_1.InventoryModel.DELETE;
+            yield repository.save(inventory);
+            return inventory;
         });
     }
 }
-exports.SupplierAdapterRepository = SupplierAdapterRepository;
+exports.InventoryAdapterRepository = InventoryAdapterRepository;

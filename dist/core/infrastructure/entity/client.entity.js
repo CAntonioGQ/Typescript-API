@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const typeorm_1 = require("typeorm");
+const order_entity_1 = require("./order.entity");
 let Client = class Client {
 };
 exports.Client = Client;
@@ -18,6 +19,10 @@ __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_client', type: "integer" }),
     __metadata("design:type", Number)
 ], Client.prototype, "idClient", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => order_entity_1.Order, order => order.client),
+    __metadata("design:type", Array)
+], Client.prototype, "orders", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'name', type: "varchar" }),
     __metadata("design:type", String)
@@ -31,7 +36,7 @@ __decorate([
     __metadata("design:type", String)
 ], Client.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: "integer" }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
     __metadata("design:type", Number)
 ], Client.prototype, "status", void 0);
 __decorate([

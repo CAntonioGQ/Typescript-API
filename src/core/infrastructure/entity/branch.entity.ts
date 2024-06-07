@@ -28,7 +28,7 @@ export class Branch {
   @Column({name:'name', type:'varchar'})
   branch!: Branch; 
 
-  @Column({name:'status', type:'number'})
+  @Column({name:'status', type:'integer'})
   status!: number;
   
   @CreateDateColumn()  

@@ -9,36 +9,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Inventory = void 0;
+exports.Order = void 0;
 const typeorm_1 = require("typeorm");
-const product_entity_1 = require("./product.entity");
-let Inventory = class Inventory {
+const client_entity_1 = require("./client.entity");
+const order_detail_1 = require("./order_detail");
+let Order = class Order {
 };
-exports.Inventory = Inventory;
+exports.Order = Order;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_inventory', type: "integer" }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_order', type: 'integer' }),
     __metadata("design:type", Number)
-], Inventory.prototype, "idInventory", void 0);
+], Order.prototype, "idOrder", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product.inventory),
-    __metadata("design:type", Array)
-], Inventory.prototype, "products", void 0);
+    (0, typeorm_1.ManyToOne)(() => client_entity_1.Client) // Corregir la relación a ManyToOne
+    ,
+    __metadata("design:type", client_entity_1.Client)
+], Order.prototype, "client", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'quantity', type: "varchar" }),
-    __metadata("design:type", String)
-], Inventory.prototype, "quantity", void 0);
+    (0, typeorm_1.OneToOne)(() => order_detail_1.OrderDetail, orderDetail => orderDetail.order),
+    __metadata("design:type", order_detail_1.OrderDetail)
+], Order.prototype, "orderDetail", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'order_date', type: 'date' }),
+    __metadata("design:type", Date)
+], Order.prototype, "orderDate", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'total_price', type: 'number' }),
+    __metadata("design:type", Number)
+], Order.prototype, "totalPrice", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
     __metadata("design:type", Number)
-], Inventory.prototype, "status", void 0);
+], Order.prototype, "status", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Inventory.prototype, "createdAt", void 0);
+], Order.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], Inventory.prototype, "updatedAt", void 0);
-exports.Inventory = Inventory = __decorate([
-    (0, typeorm_1.Entity)({ name: 'inventory' })
-], Inventory);
+], Order.prototype, "updatedAt", void 0);
+exports.Order = Order = __decorate([
+    (0, typeorm_1.Entity)({ name: 'orders' })
+], Order);

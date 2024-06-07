@@ -12,54 +12,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SupplierAdapterRepository = void 0;
+exports.BranchAdapterRepository = void 0;
 const http_errors_1 = require("http-errors");
 const database_1 = __importDefault(require("../../../config/database/database"));
-const supplier_entity_1 = require("../entity/supplier.entity");
-const supplier_1 = require("../../domain/models/supplier");
-class SupplierAdapterRepository {
+const branch_entity_1 = require("../entity/branch.entity");
+const branch_1 = require("../../domain/models/branch");
+class BranchAdapterRepository {
     create(data, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
-            const supplier = repository.create(Object.assign(Object.assign({}, data), { status: supplier_1.SupplierModel.ENABLE }));
-            yield repository.save(supplier);
-            return supplier;
+            const repository = database_1.default.getRepository(branch_entity_1.Branch);
+            const branch = repository.create(Object.assign(Object.assign({}, data), { status: branch_1.BranchModel.ENABLE }));
+            yield repository.save(branch);
+            return branch;
         });
     }
     list(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
+            const repository = database_1.default.getRepository(branch_entity_1.Branch);
             return repository.find();
         });
     }
     get(id, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
-            const supplier = yield repository.findOneBy({ idSupplier: id });
-            if (!supplier) {
-                throw new http_errors_1.NotFound("Supplier does not exist");
+            const repository = database_1.default.getRepository(branch_entity_1.Branch);
+            const branch = yield repository.findOneBy({ idBranch: id });
+            if (!branch) {
+                throw new http_errors_1.NotFound("No existe una sucursal con el id proporcionado");
             }
-            return supplier;
+            return branch;
         });
     }
     update(id, data, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
+            const repository = database_1.default.getRepository(branch_entity_1.Branch);
             yield repository.update(id, data);
             return this.get(id, query);
         });
     }
     remove(id, query) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = database_1.default.getRepository(supplier_entity_1.Supplier);
-            const supplier = yield this.get(id, query);
-            if (!supplier) {
-                throw new http_errors_1.NotFound("Supplier Not Found");
+            const repository = database_1.default.getRepository(branch_entity_1.Branch);
+            const branch = yield this.get(id, query);
+            if (!branch) {
+                throw new http_errors_1.NotFound("Branch does not exist");
             }
-            supplier.status = supplier_1.SupplierModel.DELETE;
-            yield repository.save(supplier);
-            return supplier;
+            branch.status = branch_1.BranchModel.DELETE;
+            yield repository.save(branch);
+            return branch;
         });
     }
 }
-exports.SupplierAdapterRepository = SupplierAdapterRepository;
+exports.BranchAdapterRepository = BranchAdapterRepository;

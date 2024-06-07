@@ -20,7 +20,7 @@ export class Inventory {
   @Column({name:'quantity', type:"varchar"})  
   quantity!: string;
 
-  @Column({name:'status', type:'number'})
+  @Column({name:'status', type:'integer'})
   status!: number;
 
   @CreateDateColumn()

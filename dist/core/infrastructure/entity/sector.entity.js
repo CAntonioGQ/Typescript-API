@@ -9,36 +9,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Inventory = void 0;
+exports.Sector = void 0;
 const typeorm_1 = require("typeorm");
-const product_entity_1 = require("./product.entity");
-let Inventory = class Inventory {
+const branch_entity_1 = require("./branch.entity");
+let Sector = class Sector {
 };
-exports.Inventory = Inventory;
+exports.Sector = Sector;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_inventory', type: "integer" }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_sector', type: 'integer' }),
     __metadata("design:type", Number)
-], Inventory.prototype, "idInventory", void 0);
+], Sector.prototype, "idSector", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product.inventory),
+    (0, typeorm_1.OneToMany)(() => branch_entity_1.Branch, branch => branch.sector),
     __metadata("design:type", Array)
-], Inventory.prototype, "products", void 0);
+], Sector.prototype, "branch", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'quantity', type: "varchar" }),
+    (0, typeorm_1.Column)({ name: 'sector', type: 'varchar' }),
     __metadata("design:type", String)
-], Inventory.prototype, "quantity", void 0);
+], Sector.prototype, "sector", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
     __metadata("design:type", Number)
-], Inventory.prototype, "status", void 0);
+], Sector.prototype, "status", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Inventory.prototype, "createdAt", void 0);
+], Sector.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], Inventory.prototype, "updatedAt", void 0);
-exports.Inventory = Inventory = __decorate([
-    (0, typeorm_1.Entity)({ name: 'inventory' })
-], Inventory);
+], Sector.prototype, "updatedAt", void 0);
+exports.Sector = Sector = __decorate([
+    (0, typeorm_1.Entity)({ name: 'sector' })
+], Sector);

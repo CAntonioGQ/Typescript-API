@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 const typeorm_1 = require("typeorm");
 const price_entity_1 = require("./price.entity");
+const inventory_entity_1 = require("./inventory.entity");
 let Product = class Product {
 };
 exports.Product = Product;
@@ -33,7 +34,12 @@ __decorate([
     __metadata("design:type", price_entity_1.Price)
 ], Product.prototype, "price", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: "integer" }),
+    (0, typeorm_1.ManyToOne)(() => inventory_entity_1.Inventory),
+    (0, typeorm_1.JoinColumn)({ name: 'id_inventory' }),
+    __metadata("design:type", inventory_entity_1.Inventory)
+], Product.prototype, "inventory", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
     __metadata("design:type", Number)
 ], Product.prototype, "status", void 0);
 __decorate([
