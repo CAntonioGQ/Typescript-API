@@ -3,11 +3,13 @@ import {
   CreateDateColumn, 
   Entity, 
   OneToMany, 
+  OneToOne, 
   PrimaryGeneratedColumn, 
   UpdateDateColumn 
 } from "typeorm";
 
 import { Client } from "./client.entity";
+import { OrderDetail } from "./order_detail";
 
 @Entity({name:'orders'})
 export class Order {
@@ -16,7 +18,10 @@ export class Order {
 
   @OneToMany(() => Client, client => client.order)
   clients!: Client[];
-  
+
+  @OneToOne(() => OrderDetail, orderDetail => orderDetail.order)
+  orderDetail!: OrderDetail;
+
   @Column({name:'order_date', type:'date'})
   orderDate!: Date;
 
