@@ -7,6 +7,7 @@ export class InventoryModel{
 
   private idInventory: number | undefined;
   private idProduct: number | undefined;
+  private idSupplier: number | undefined;
   private quantity: number | undefined;
   private status: number | undefined;
 
@@ -21,6 +22,12 @@ export class InventoryModel{
   }
   public set setIdProduct(idProduct: number | undefined){
       this.idProduct = idProduct;
+  }
+  public get getIdSupplier(): number | undefined{
+      return this.idSupplier;
+  }
+  public set setIdSupplier(idSupplier: number | undefined) {
+      this.idSupplier = idSupplier;
   }
   public get getQuantity(): number | undefined {
       return this.quantity;

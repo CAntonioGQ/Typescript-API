@@ -14,6 +14,12 @@ class InventoryModel {
     set setIdProduct(idProduct) {
         this.idProduct = idProduct;
     }
+    get getIdSupplier() {
+        return this.idSupplier;
+    }
+    set setIdSupplier(idSupplier) {
+        this.idSupplier = idSupplier;
+    }
     get getQuantity() {
         return this.quantity;
     }

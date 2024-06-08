@@ -28,13 +28,13 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => sector_entity_1.Sector),
     (0, typeorm_1.JoinColumn)({ name: 'id_sector' }),
     __metadata("design:type", sector_entity_1.Sector)
-], Branch.prototype, "sector", void 0);
+], Branch.prototype, "sectorName", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'name', type: 'varchar' }),
     __metadata("design:type", Branch)
-], Branch.prototype, "branch", void 0);
+], Branch.prototype, "branchName", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'integer' }),
     __metadata("design:type", Number)
 ], Branch.prototype, "status", void 0);
 __decorate([

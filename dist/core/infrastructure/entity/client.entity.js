@@ -36,7 +36,7 @@ __decorate([
     __metadata("design:type", String)
 ], Client.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'integer' }),
     __metadata("design:type", Number)
 ], Client.prototype, "status", void 0);
 __decorate([

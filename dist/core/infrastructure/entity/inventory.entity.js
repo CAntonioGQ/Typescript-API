@@ -28,7 +28,7 @@ __decorate([
     __metadata("design:type", String)
 ], Inventory.prototype, "quantity", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'integer' }),
     __metadata("design:type", Number)
 ], Inventory.prototype, "status", void 0);
 __decorate([

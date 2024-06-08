@@ -65,8 +65,8 @@ class BranchController {
     remove(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { brancheId } = req.params;
-                const branch = yield this.branchRepository.remove(brancheId);
+                const { sucursalId } = req.params;
+                const branch = yield this.branchRepository.remove(sucursalId);
                 res.status(200).json(branch);
             }
             catch (error) {

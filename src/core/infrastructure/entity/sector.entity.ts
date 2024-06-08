@@ -13,11 +13,11 @@ import { Branch } from "./branch.entity";
   @PrimaryGeneratedColumn({name:'id_sector', type:'integer'})
   idSector!: number;
 
-  @OneToMany(() => Branch, branch => branch.sector)
+  @OneToMany(() => Branch, branch => branch.sectorName)
   branch!: Branch[];
 
   @Column({name:'sector', type:'varchar'})
-  sector!: string;
+  sectorName!: string;
 
   @Column({name:'status', type:'integer'})
   status!: number;

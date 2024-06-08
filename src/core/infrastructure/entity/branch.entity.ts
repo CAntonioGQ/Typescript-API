@@ -6,8 +6,8 @@ import {
   ManyToOne, 
   OneToMany, 
   PrimaryGeneratedColumn, 
-  UpdateDateColumn }
- from "typeorm";
+  UpdateDateColumn 
+} from "typeorm";
 
 
 import { Employee } from "./employee.entity";
@@ -23,10 +23,10 @@ export class Branch {
 
   @ManyToOne(() => Sector)
   @JoinColumn({name: 'id_sector'})
-  sector!: Sector;
+  sectorName!: Sector;
 
   @Column({name:'name', type:'varchar'})
-  branch!: Branch; 
+  branchName!: Branch; 
 
   @Column({name:'status', type:'integer'})
   status!: number;

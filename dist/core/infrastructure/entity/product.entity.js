@@ -39,7 +39,7 @@ __decorate([
     __metadata("design:type", inventory_entity_1.Inventory)
 ], Product.prototype, "inventory", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'integer' }),
     __metadata("design:type", Number)
 ], Product.prototype, "status", void 0);
 __decorate([

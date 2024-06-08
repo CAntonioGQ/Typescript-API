@@ -15,10 +15,16 @@ class BranchModel {
         this.idSector = idSector;
     }
     get getBranch() {
-        return this.branch;
+        return this.branchName;
     }
-    set setBranch(branch) {
-        this.branch = branch;
+    set setBranch(branchName) {
+        this.branchName = branchName;
+    }
+    get getStatus() {
+        return this.status;
+    }
+    set setStatus(status) {
+        this.status = status;
     }
 }
 exports.BranchModel = BranchModel;

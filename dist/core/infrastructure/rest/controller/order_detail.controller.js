@@ -40,8 +40,8 @@ class OrderDetailController {
     get(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { detalleOrdenId } = req.params;
-                const orderDetail = yield this.orderDetailRepository.get(detalleOrdenId);
+                const { detalleDeOrdenId } = req.params;
+                const orderDetail = yield this.orderDetailRepository.get(detalleDeOrdenId);
                 res.status(200).json(orderDetail);
             }
             catch (error) {
@@ -52,9 +52,9 @@ class OrderDetailController {
     update(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { detalleOrdenId } = req.params;
+                const { detalleDeOrdenId } = req.params;
                 const body = req.body;
-                const orderDetail = yield this.orderDetailRepository.update(detalleOrdenId, body);
+                const orderDetail = yield this.orderDetailRepository.update(detalleDeOrdenId, body);
                 res.status(200).json(orderDetail);
             }
             catch (error) {
@@ -65,8 +65,8 @@ class OrderDetailController {
     remove(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { detalleOrdenId } = req.params;
-                const orderDetail = yield this.orderDetailRepository.remove(detalleOrdenId);
+                const { detalleDeOrdenId } = req.params;
+                const orderDetail = yield this.orderDetailRepository.remove(detalleDeOrdenId);
                 res.status(200).json(orderDetail);
             }
             catch (error) {

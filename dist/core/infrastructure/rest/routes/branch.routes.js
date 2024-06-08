@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const branch_controller_1 = require("../controller/branch.controller");
+const branch_repository_adapter_1 = require("../../adapters/branch.repository.adapter");
+const branchRouter = (0, express_1.Router)();
+const controller = new branch_controller_1.BranchController(new branch_repository_adapter_1.BranchAdapterRepository());
+branchRouter.post("/sucursal", controller.create.bind(controller));
+branchRouter.get("/sucursal", controller.list.bind(controller));
+branchRouter.get("/sucursal/:sucursalId", controller.get.bind(controller));
+branchRouter.put("/sucursal/:sucursalId", controller.update.bind(controller));
+branchRouter.delete("/sucursal/:sucursalId", controller.remove.bind(controller));
+exports.default = branchRouter;

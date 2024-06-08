@@ -34,11 +34,11 @@ __decorate([
     __metadata("design:type", Date)
 ], Order.prototype, "orderDate", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'total_price', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'total_price', type: 'decimal' }),
     __metadata("design:type", Number)
 ], Order.prototype, "totalPrice", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'integer' }),
     __metadata("design:type", Number)
 ], Order.prototype, "status", void 0);
 __decorate([

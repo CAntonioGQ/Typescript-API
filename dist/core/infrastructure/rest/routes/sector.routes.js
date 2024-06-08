@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const sector_controller_1 = require("../controller/sector.controller");
+const sector_repository_adapter_1 = require("../../adapters/sector.repository.adapter");
+const sectorRouter = (0, express_1.Router)();
+const controller = new sector_controller_1.SectorController(new sector_repository_adapter_1.SectorAdapterRepository());
+sectorRouter.post("/sector", controller.create.bind(controller));
+sectorRouter.get("/sector", controller.list.bind(controller));
+sectorRouter.get("/sector/:sectorId", controller.get.bind(controller));
+sectorRouter.put("/sector/:sectorId", controller.update.bind(controller));
+sectorRouter.delete("/sector/:sectorId", controller.remove.bind(controller));
+exports.default = sectorRouter;

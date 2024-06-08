@@ -26,8 +26,8 @@ export class OrderDetailController {
 
   async get(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { detalleOrdenId } = req.params;
-      const orderDetail = await this.orderDetailRepository.get(detalleOrdenId);
+      const { detalleDeOrdenId } = req.params;
+      const orderDetail = await this.orderDetailRepository.get(detalleDeOrdenId);
       res.status(200).json(orderDetail);
     } catch (error) {
       next(error);
@@ -36,9 +36,9 @@ export class OrderDetailController {
 
   async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { detalleOrdenId } = req.params;
+      const { detalleDeOrdenId } = req.params;
       const body = req.body;
-      const orderDetail = await this.orderDetailRepository.update(detalleOrdenId, body);
+      const orderDetail = await this.orderDetailRepository.update(detalleDeOrdenId, body);
       res.status(200).json(orderDetail);
     } catch (error) {
       next(error);
@@ -47,8 +47,8 @@ export class OrderDetailController {
 
   async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { detalleOrdenId } = req.params;
-      const orderDetail = await this.orderDetailRepository.remove(detalleOrdenId);
+      const { detalleDeOrdenId } = req.params;
+      const orderDetail = await this.orderDetailRepository.remove(detalleDeOrdenId);
       res.status(200).json(orderDetail);
     } catch (error) {
       next(error);

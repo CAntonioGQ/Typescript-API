@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const inventory_controller_1 = require("../controller/inventory.controller");
+const inventory_repository_adapter_1 = require("../../adapters/inventory.repository.adapter");
+const inventoryRouter = (0, express_1.Router)();
+const controller = new inventory_controller_1.InventoryController(new inventory_repository_adapter_1.InventoryAdapterRepository());
+inventoryRouter.post("/inventario", controller.create.bind(controller));
+inventoryRouter.get("/inventario", controller.list.bind(controller));
+inventoryRouter.get("/inventario/:inventarioId", controller.get.bind(controller));
+inventoryRouter.put("/inventario/:inventarioId", controller.update.bind(controller));
+inventoryRouter.delete("/inventario/:inventarioId", controller.remove.bind(controller));
+exports.default = inventoryRouter;

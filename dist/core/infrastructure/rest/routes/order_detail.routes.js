@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const order_detail_controller_1 = require("../controller/order_detail.controller");
+const order_detail_repository_adapter_1 = require("../../adapters/order_detail.repository.adapter");
+const orderDetailRouter = (0, express_1.Router)();
+const controller = new order_detail_controller_1.OrderDetailController(new order_detail_repository_adapter_1.OrderDetailAdapterRepository());
+orderDetailRouter.post("/detalleDeOrden", controller.create.bind(controller));
+orderDetailRouter.get("/detalleDeOrden", controller.list.bind(controller));
+orderDetailRouter.get("/detalleDeOrden/:detalleDeOrdenId", controller.get.bind(controller));
+orderDetailRouter.put("/detalleDeOrden/:detalleDeOrdenId", controller.update.bind(controller));
+orderDetailRouter.delete("/detalleDeOrden/:detalleDeOrdenId", controller.remove.bind(controller));
+exports.default = orderDetailRouter;

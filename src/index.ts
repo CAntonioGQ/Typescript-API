@@ -7,6 +7,11 @@ import productRouter from "./core/infrastructure/rest/routes/product.routes";
 import dotenv from "dotenv";
 import supplierRouter from "./core/infrastructure/rest/routes/supplier.routes";
 import priceRouter from "./core/infrastructure/rest/routes/price.routes";
+import inventoryRouter from "./core/infrastructure/rest/routes/inventory.routes";
+import branchRouter from "./core/infrastructure/rest/routes/branch.routes";
+import orderDetailRouter from "./core/infrastructure/rest/routes/order_detail.routes";
+import orderRouter from "./core/infrastructure/rest/routes/order.routes";
+import sectorRouter from "./core/infrastructure/rest/routes/sector.routes";
 
 dotenv.config();
 
@@ -20,7 +25,7 @@ database.initialize()
   .then(() => console.log("Database connected"))
   .catch(console.error);
 
-app.use('/api', clientRouter, employeeRouter, productRouter, priceRouter, supplierRouter);
+app.use('/api',branchRouter, clientRouter, employeeRouter, inventoryRouter, orderDetailRouter, orderRouter, priceRouter, productRouter, sectorRouter, supplierRouter);
 
 app.listen(PORT, () => {
   console.log('App executing on port: ' + PORT);

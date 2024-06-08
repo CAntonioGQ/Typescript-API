@@ -7,7 +7,9 @@ export class BranchModel {
 
   private idBranch: number | undefined;
   private idSector: number | undefined;
-  private branch: string | undefined;
+  private branchName: string | undefined;
+  private status: number | undefined;
+
 
   public get getIdBranch(): number | undefined{
     return this.idBranch;
@@ -22,9 +24,15 @@ export class BranchModel {
     this.idSector = idSector;
   }
   public get getBranch(): string | undefined{
-    return this.branch;
+    return this.branchName;
   }
-  public set setBranch(branch: string | undefined){
-    this.branch = branch;
+  public set setBranch(branchName: string | undefined){
+    this.branchName = branchName;
+  }
+  public get getStatus(): number | undefined{
+    return this.status;
+  } 
+  public set setStatus(status: number | undefined){
+    this.status = status;
   }
 }

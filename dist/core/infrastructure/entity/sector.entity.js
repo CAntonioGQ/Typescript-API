@@ -20,15 +20,15 @@ __decorate([
     __metadata("design:type", Number)
 ], Sector.prototype, "idSector", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => branch_entity_1.Branch, branch => branch.sector),
+    (0, typeorm_1.OneToMany)(() => branch_entity_1.Branch, branch => branch.sectorName),
     __metadata("design:type", Array)
 ], Sector.prototype, "branch", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'sector', type: 'varchar' }),
     __metadata("design:type", String)
-], Sector.prototype, "sector", void 0);
+], Sector.prototype, "sectorName", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'status', type: 'number' }),
+    (0, typeorm_1.Column)({ name: 'status', type: 'integer' }),
     __metadata("design:type", Number)
 ], Sector.prototype, "status", void 0);
 __decorate([

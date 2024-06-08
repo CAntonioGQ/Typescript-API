@@ -47,8 +47,8 @@ export class BranchController {
 
   async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { brancheId } = req.params;
-      const branch = await this.branchRepository.remove(brancheId);
+      const { sucursalId } = req.params;
+      const branch = await this.branchRepository.remove(sucursalId);
       res.status(200).json(branch);
     } catch (error) {
       next(error);

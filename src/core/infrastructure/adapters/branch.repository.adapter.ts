@@ -1,6 +1,6 @@
 import { NotFound } from 'http-errors';
 import database from "../../../config/database/database";
-import { BranchRepository, Id, Query } from "../../domain/repository/branch.repository";
+import { BranchRepository, Id, Query } from '../../domain/repository/branch.repository';
 import { Branch } from "../entity/branch.entity";
 import { BranchModel } from "../../domain/models/branch";
 
