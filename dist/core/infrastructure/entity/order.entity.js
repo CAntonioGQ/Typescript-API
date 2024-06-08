@@ -21,14 +21,15 @@ __decorate([
     __metadata("design:type", Number)
 ], Order.prototype, "idOrder", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => client_entity_1.Client) // Corregir la relación a ManyToOne
+    (0, typeorm_1.ManyToOne)(() => client_entity_1.Client, client => client.orders),
+    (0, typeorm_1.JoinColumn)({ name: 'id_client' }) // Especificar la columna de la relación
     ,
     __metadata("design:type", client_entity_1.Client)
 ], Order.prototype, "client", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => order_detail_1.OrderDetail, orderDetail => orderDetail.order),
-    __metadata("design:type", order_detail_1.OrderDetail)
-], Order.prototype, "orderDetail", void 0);
+    (0, typeorm_1.OneToMany)(() => order_detail_1.OrderDetail, orderDetail => orderDetail.order),
+    __metadata("design:type", Array)
+], Order.prototype, "orderDetails", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'order_date', type: 'date' }),
     __metadata("design:type", Date)

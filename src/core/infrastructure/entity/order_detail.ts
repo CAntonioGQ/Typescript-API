@@ -1,4 +1,11 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column,
+   CreateDateColumn,
+   Entity,
+   JoinColumn,
+   ManyToOne,
+   PrimaryGeneratedColumn,
+   UpdateDateColumn
+   } from "typeorm";
 import { Order } from "./order.entity";
 
 @Entity({name:'order_details'})
@@ -6,8 +13,8 @@ export class OrderDetail {
   @PrimaryGeneratedColumn({name:'id_order_detail', type:'integer'})
   idOrderDetail!: number;
 
-  @OneToOne(()=> Order, order => order.orderDetail)
-  @JoinColumn()
+  @ManyToOne(() => Order)
+  @JoinColumn({ name: 'id_order' }) // Asegúrate de tener el nombre correcto de la columna en la tabla de detalles de orden que hace referencia a la orden
   order!: Order;
 
   @Column({name:'quantity', type:'integer'})

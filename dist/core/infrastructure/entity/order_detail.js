@@ -20,8 +20,9 @@ __decorate([
     __metadata("design:type", Number)
 ], OrderDetail.prototype, "idOrderDetail", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => order_entity_1.Order, order => order.orderDetail),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.ManyToOne)(() => order_entity_1.Order),
+    (0, typeorm_1.JoinColumn)({ name: 'id_order' }) // Asegúrate de tener el nombre correcto de la columna en la tabla de detalles de orden que hace referencia a la orden
+    ,
     __metadata("design:type", order_entity_1.Order)
 ], OrderDetail.prototype, "order", void 0);
 __decorate([

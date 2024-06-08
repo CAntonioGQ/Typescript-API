@@ -26,7 +26,7 @@ import { Inventory } from "./inventory.entity";
     price!: Price;
   
     @ManyToOne(() => Inventory)
-    @JoinColumn({name: 'id_inventory'})
+    @JoinColumn({name: 'id_product'})
     inventory!: Inventory; 
 
     @Column({name:'status', type:'integer'})

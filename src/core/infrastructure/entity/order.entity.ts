@@ -2,9 +2,9 @@ import {
   Column, 
   CreateDateColumn, 
   Entity, 
+  JoinColumn, 
   ManyToOne, 
   OneToMany, 
-  OneToOne, 
   PrimaryGeneratedColumn, 
   UpdateDateColumn 
 } from "typeorm";
@@ -17,11 +17,12 @@ export class Order {
   @PrimaryGeneratedColumn({name:'id_order', type:'integer'})
   idOrder!: number; 
 
-  @ManyToOne(() => Client) // Corregir la relación a ManyToOne
+  @ManyToOne(() => Client, client => client.orders)
+  @JoinColumn({ name: 'id_client' }) // Especificar la columna de la relación
   client!: Client;
 
-  @OneToOne(() => OrderDetail, orderDetail => orderDetail.order)
-  orderDetail!: OrderDetail;
+  @OneToMany(() => OrderDetail, orderDetail => orderDetail.order)
+  orderDetails!: OrderDetail[];
 
   @Column({name:'order_date', type:'date'})
   orderDate!: Date;

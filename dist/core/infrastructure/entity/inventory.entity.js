@@ -20,7 +20,8 @@ __decorate([
     __metadata("design:type", Number)
 ], Inventory.prototype, "idInventory", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product.inventory),
+    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product.inventory, { onDelete: 'CASCADE' }) // Agregar opción onDelete
+    ,
     __metadata("design:type", Array)
 ], Inventory.prototype, "products", void 0);
 __decorate([

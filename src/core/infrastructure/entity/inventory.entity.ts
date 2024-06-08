@@ -13,9 +13,9 @@ import { Product } from './product.entity';
 export class Inventory {
   @PrimaryGeneratedColumn({name:'id_inventory', type: "integer"})
   idInventory!: number;
-
-  @OneToMany(() => Product, product => product.inventory)
-  products!: Product[]
+  
+  @OneToMany(() => Product, product => product.inventory, { onDelete: 'CASCADE' }) // Agregar opción onDelete
+  products!: Product[];
 
   @Column({name:'quantity', type:"varchar"})  
   quantity!: string;
