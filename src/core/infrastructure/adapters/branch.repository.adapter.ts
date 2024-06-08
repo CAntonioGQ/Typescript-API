@@ -39,7 +39,7 @@ export class BranchAdapterRepository implements BranchRepository<Branch> {
     const branch = await this.get(id, query);
     if (!branch) {
       throw new NotFound("Branch does not exist");
-    }
+    }   
     branch.status = BranchModel.DELETE;
     await repository.save(branch);
     return branch;
