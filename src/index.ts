@@ -27,7 +27,8 @@ database.initialize()
   .then(() => console.log("Database connected"))
   .catch(console.error);
 
-app.use('/api',branchRouter, clientRouter, employeeRouter, inventoryRouter, orderDetailRouter, orderRouter, priceRouter, productRouter, sectorRouter, supplierRouter);
+app.use('/api',branchRouter, clientRouter, employeeRouter, inventoryRouter, 
+  orderDetailRouter, orderRouter, priceRouter, productRouter, sectorRouter, supplierRouter);
 
 app.listen(PORT, () => {
   console.log('App executing on port: ' + PORT);
